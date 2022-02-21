@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<h1>For Today, *Day - Month - Year*</h1>
+
+<h3>Habits:</h3>
+
+{% for habit in habits %}
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ habit.habit_name }}</span>
+    <br />
+    Done?
+    <input type="checkbox">
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}
