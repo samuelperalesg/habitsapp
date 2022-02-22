@@ -1,5 +1,6 @@
 from audioop import reverse
 from django.db import models
+from django.urls import reverse
 
 # Habit Model
 

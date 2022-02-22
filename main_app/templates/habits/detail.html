@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<button class="back-btn"><a href="/dashboard">Go Back</a></button>
+
 <div class="card">
   <div class="card-content">
     <h1 class="card-title">{{ habit.habit_name }}</h1>
@@ -13,8 +15,14 @@
     <p>External Cue: {{ habit.external_cue }}</p>
     <p>Internal Cue: {{ habit.internal_cue }}</p>
   </div>
+
+  <div class="habit-actions">
+    <a href="{% url 'update' habit.id %}">Edit</a>
+    <a href="{% url 'delete' habit.id %}">Delete</a>
+  </div>
+
 </div>
 
-<button class="back-btn"><a href="/dashboard">Go Back</a></button>
+
 
 {% endblock %}

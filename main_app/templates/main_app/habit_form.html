@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if object %}
+<h1>Edit: <span>{{object.habit_name}}</span></h1>
+{% else %}
+<h1>Add Habit</h1>
+{% endif %}
 <form class="add-form" action="" method="post">
   {% csrf_token %}
   <table class="add-table">

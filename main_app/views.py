@@ -1,5 +1,6 @@
+from dataclasses import fields
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Habit
 
 # Views
@@ -35,8 +36,18 @@ def logout(request):
 
 # Class Based Views (CBVs) =====================
 
-
+# Create Habit
 class HabitCreate(CreateView):
 	model = Habit
 	fields = '__all__'
+	success_url = '/dashboard/'
+
+# Update Habit
+class HabitUpdate(UpdateView):
+	model = Habit
+	fields = ['healthy', 'plan_of_action', 'external_cue', 'internal_cue']
+
+# Delete Habit
+class HabitDelete(DeleteView):
+	model = Habit
 	success_url = '/dashboard/'
