@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Habit
 
 # Views
@@ -26,11 +27,16 @@ def habits_detail(request, habit_id):
 def inspo(request):
 	return render(request, 'inspo.html')
 
-# Add_edit View
-def add_edit(request):
-	return render(request, 'add_edit.html')
 
 # Logout View
 def logout(request):
 	return render(request, 'logout.html')
 
+
+# Class Based Views (CBVs) =====================
+
+
+class HabitCreate(CreateView):
+	model = Habit
+	fields = '__all__'
+	success_url = '/dashboard/'

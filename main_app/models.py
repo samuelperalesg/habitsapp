@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.db import models
 
 # Habit Model
@@ -11,3 +12,6 @@ class Habit(models.Model):
 
 	def __str__(self):
 		return self.habit_name
+
+	def get_absolute_url(self):
+		return reverse('detail', kwargs={'habit_id': self.id})

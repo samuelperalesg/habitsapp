@@ -6,7 +6,7 @@ urlpatterns = [
 	path('signup/', views.signup, name='signup'),
 	path('dashboard/', views.dashboard, name='dashboard'),
 	path('habits/<int:habit_id>/', views.habits_detail, name='detail'),
+	path('add/', views.HabitCreate.as_view(), name='add'),
 	path('inspo/', views.inspo, name='inspo'),
-	path('add_edit/', views.add_edit, name='add_edit'),
 	path('logout/', views.logout, name='logout'),
 ]
