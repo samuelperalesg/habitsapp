@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Habit
 
 # Views
 # ========================================================
@@ -12,9 +12,15 @@ def welcome(request):
 def signup(request):
 	return render(request, 'signup.html')
 
-# Dashboard View
+# Dashboard - Habits View
 def dashboard(request):
+	habits = Habit.objects.all()
 	return render(request, 'dashboard.html', {'habits': habits})
+
+# Dashboard - Habits Detail View
+def habits_detail(request, habit_id):
+	habit = Habit.objects.get(id=habit_id)
+	return render(request, 'habits/detail.html', { 'habit': habit })
 
 # Inspo View
 def inspo(request):
@@ -28,17 +34,3 @@ def add_edit(request):
 def logout(request):
 	return render(request, 'logout.html')
 
-# Models
-# ========================================================
-
-class Habit:
-	def __init__(self, habit_name, healthy, plan_of_action, external_cue, internal_cue):
-		self.habit_name = habit_name
-		self.healthy = healthy
-		self.plan_of_action = plan_of_action
-		self.external_cue = external_cue
-		self.internal_cue = internal_cue
-
-habits = [
-	Habit('Brushing Teeth', 'True', 'none', 'Teeth feel dirty', 'I want to have a pretty smile'),
-]

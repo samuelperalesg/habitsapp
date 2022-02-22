@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <h1 class="card-title">{{ habit.habit_name }}</h1>
+    {% if habit.healthy == False %}
+    <h4>This is not Healthy, Please Review Plan of Action</h4>
+    <p>Plan of Action: {{ habit.plan_of_action }}</p>
+    {% else %}
+    <h4>This is healthy for you!</h4>
+    {% endif %}
+    <p>External Cue: {{ habit.external_cue }}</p>
+    <p>Internal Cue: {{ habit.internal_cue }}</p>
+  </div>
+</div>
+
+{% endblock %}

@@ -5,6 +5,9 @@ from django.db import models
 class Habit(models.Model):
 	habit_name = models.CharField(max_length=100)
 	healthy = models.BooleanField()
-	plan_of_action = models.TextField(max_length=250)
-	external_cue = models.CharField(max_length=100)
-	internal_cue = models.CharField(max_length=100)
+	plan_of_action = models.TextField(max_length=200)
+	external_cue = models.TextField(max_length=200)
+	internal_cue = models.TextField(max_length=200)
+
+	def __str__(self):
+		return self.habit_name
