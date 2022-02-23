@@ -70,8 +70,18 @@ class HabitCreate(LoginRequiredMixin, CreateView):
 class HabitUpdate(LoginRequiredMixin, UpdateView):
 	model = Habit
 	fields = ['healthy', 'plan_of_action', 'external_cue', 'internal_cue']
+	def dispatch(self, request, *args, **kwargs):
+		obj = self.get_object()
+		if obj.user != self.request.user:
+			return redirect('accounts/login/')
+		return super(HabitUpdate, self).dispatch(request, *args, **kwargs)
 
 # Delete Habit
 class HabitDelete(LoginRequiredMixin, DeleteView):
 	model = Habit
 	success_url = '/dashboard/'
+	def dispatch(self, request, *args, **kwargs):
+		obj = self.get_object()
+		if obj.user != self.request.user:
+			return redirect('accounts/login/')
+		return super(HabitUpdate, self).dispatch(request, *args, **kwargs)
