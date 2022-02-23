@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>Ready to Sign Up?</h1>
+<h1 class="signup-welcome">Ready to Sign Up?</h1>
 
 {% if error_message %}
 <h3 class="signup-error">{{ error_message }}</h3>
 {% endif %}
 
-<form method="post" action="{% url 'signup' %}">
+<form class="signup-form" method="post" action="{% url 'signup' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" class="btn" value="signup" />
