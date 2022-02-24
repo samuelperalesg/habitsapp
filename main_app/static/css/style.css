@@ -27,6 +27,15 @@ body {
   background-color: #FFA254;
   padding: 0%;
   align-items: center;
+
+}
+
+.dashboard-title {
+  font-size: 30px;
+}
+
+.card {
+  font-size: 40px;
 }
 
 .nav-items {
@@ -92,3 +101,4 @@ footer {
   font-size: 15px;
   margin-bottom: 50px;
 }
+
