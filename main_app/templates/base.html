@@ -28,7 +28,12 @@
           {% if user.is_authenticated %}
           <li class="dashboard-btn"><a href="{% url 'dashboard' %}">Dashboard&nbsp;&nbsp;</a></li>
           <li class="inspo-btn"><a href="/inspo">Inspo&nbsp;&nbsp;</a></li>
-          <li class="logout-btn"><a href="{% url 'logout' %}">Logout</a></li>
+          <li class="logout-btn">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+          </li>        
           {% else %}
           <li class="signup-btn"><a href="{% url 'signup' %}">SignUp&nbsp;&nbsp;</a></li>
           <li class="login-btn"><a href="{% url 'login' %}">Login&nbsp;&nbsp;</a></li>

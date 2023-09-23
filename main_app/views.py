@@ -13,13 +13,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Welcome/Login View
 
 
-def login(request):
+def user_login(request):
     return render(request, 'registration/login.html')
 
 # Signup View
 
 
-def signup(request):
+def user_signup(request):
     error_message = ''
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -57,10 +57,6 @@ def inspo(request):
     return render(request, 'inspo.html')
 
 
-# Logout View
-@login_required
-def logout(request):
-    return render(request, 'logout.html')
 
 
 # Class Based Views (CBVs) =====================
