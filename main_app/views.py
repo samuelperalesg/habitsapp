@@ -1,56 +1,70 @@
-from dataclasses import fields
-from django.shortcuts import redirect, render
+from django.urls import reverse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Habit
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
+from .models import Habit
+
+# Custom Mixin for User Permission Check
+class UserPermissionMixin:
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            return HttpResponseForbidden()
+        return super().dispatch(request, *args, **kwargs)
 
 # Views
 # ========================================================
 
 # Welcome/Login View
 
-
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     return render(request, 'registration/login.html')
+
 
 # Signup View
 
-
 def user_signup(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
     error_message = ''
+    form = UserCreationForm(request.POST) if request.method == 'POST' else UserCreationForm()
+    
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('dashboard')
         else:
-            error_message = 'Invalid Sign Up - Please try again'
-    form = UserCreationForm()
+            error_message = 'Please try again'
+    
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-# Dashboard - Habits View
 
+# Dashboard - Habits View
 
 @login_required
 def dashboard(request):
     habits = Habit.objects.filter(user=request.user)
     return render(request, 'dashboard.html', {'habits': habits})
 
-# Dashboard - Habits Detail View
 
+# Dashboard - Habits Detail View
 
 @login_required
 def habits_detail(request, habit_id):
-    habit = Habit.objects.get(id=habit_id)
+    habit = get_object_or_404(Habit, id=habit_id)
     return render(request, 'habits/detail.html', {'habit': habit})
 
-# Inspo View
 
+# Inspo View
 
 @login_required
 def inspo(request):
@@ -61,39 +75,39 @@ def inspo(request):
 
 # Class Based Views (CBVs) =====================
 
+
 # Create Habit
+
 class HabitCreate(LoginRequiredMixin, CreateView):
     model = Habit
-    fields = "__all__"
-    success_url = '/dashboard/'
+    fields = ['habit_name', 'healthy', 'plan_of_action', 'external_cue', 'internal_cue']
+    
+    def get_success_url(self):
+        return reverse('dashboard')
 
     # User model validation
-    def form_vaild(self, form):
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 # Update Habit
 
-
-class HabitUpdate(LoginRequiredMixin, UpdateView):
+class HabitUpdate(LoginRequiredMixin, UserPermissionMixin, UpdateView):
     model = Habit
-    fields = ['healthy', 'plan_of_action', 'external_cue', 'internal_cue']
+    fields = ['habit_name', 'healthy', 'plan_of_action', 'external_cue', 'internal_cue']
 
     def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.user != self.request.user:
-            return redirect('accounts/login/')
         return super(HabitUpdate, self).dispatch(request, *args, **kwargs)
+
 
 # Delete Habit
 
-
-class HabitDelete(LoginRequiredMixin, DeleteView):
+class HabitDelete(LoginRequiredMixin, UserPermissionMixin, DeleteView):
     model = Habit
-    success_url = '/dashboard/'
+    
+    def get_success_url(self):
+        return reverse('dashboard')
 
     def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.user != self.request.user:
-            return redirect('accounts/login/')
-        return super(HabitUpdate, self).dispatch(request, *args, **kwargs)
+        return super(HabitDelete, self).dispatch(request, *args, **kwargs)
