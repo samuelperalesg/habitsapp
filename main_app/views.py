@@ -2,13 +2,16 @@ from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from .models import Habit
+from .forms import CustomUserCreationForm
 
 # Custom Mixin for User Permission Check
+
+
 class UserPermissionMixin:
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -24,7 +27,8 @@ class UserPermissionMixin:
 def user_login(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
-    return render(request, 'registration/login.html')
+    form = AuthenticationForm()  # Include an instance of the form
+    return render(request, 'registration/login.html', {'form': form})  # Pass the form as context data
 
 
 # Signup View
@@ -32,10 +36,10 @@ def user_login(request):
 def user_signup(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
-    
+
     error_message = ''
-    form = UserCreationForm(request.POST) if request.method == 'POST' else UserCreationForm()
-    
+    form = CustomUserCreationForm(request.POST) if request.method == 'POST' else CustomUserCreationForm()
+
     if request.method == 'POST':
         if form.is_valid():
             user = form.save()
@@ -43,7 +47,7 @@ def user_signup(request):
             return redirect('dashboard')
         else:
             error_message = 'Please try again'
-    
+
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
@@ -71,8 +75,6 @@ def inspo(request):
     return render(request, 'inspo.html')
 
 
-
-
 # Class Based Views (CBVs) =====================
 
 
@@ -81,7 +83,7 @@ def inspo(request):
 class HabitCreate(LoginRequiredMixin, CreateView):
     model = Habit
     fields = ['habit_name', 'healthy', 'plan_of_action', 'external_cue', 'internal_cue']
-    
+
     def get_success_url(self):
         return reverse('dashboard')
 
@@ -105,7 +107,7 @@ class HabitUpdate(LoginRequiredMixin, UserPermissionMixin, UpdateView):
 
 class HabitDelete(LoginRequiredMixin, UserPermissionMixin, DeleteView):
     model = Habit
-    
+
     def get_success_url(self):
         return reverse('dashboard')
 

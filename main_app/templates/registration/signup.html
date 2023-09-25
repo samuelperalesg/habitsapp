@@ -10,8 +10,23 @@
 
 <form class="signup-form" method="post" action="{% url 'signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="signup" />
+  {% for field in form %}
+  <div class="form-group">
+    <label class="form-label">{{ field.label|capfirst }}</label>
+    <div class="input-container">
+      {{ field }}
+      <div class="form-messages">
+        {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <input type="submit" class="signupSubmit-btn" value="Sign Up" />
 </form>
 
 {% endblock %}

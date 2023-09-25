@@ -1,104 +1,228 @@
-
-/* orange: #FFA254;
-orange-pink: #F37C77;
-light-purple: #C76A91;
-dark-purple: #886395;
-dark-blue: #4E597E;
-dark-green: #2F4858; */
-
-
-
-/* resets font size to be 62.5% of the user preference - 
-     in most browser configurations this will be 10px */
-:root {
-    font-size: 62.5%
-}
-
-body {
-  background-color: #F37C77;
-  /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  margin: 0;
-}
-
-
-.nav-wrapper {
-  background-color: #FFA254;
-  padding: 0%;
-  align-items: center;
-
-}
-
-.dashboard-title {
-  font-size: 30px;
-}
-
-.card {
-  font-size: 40px;
-}
-
-.nav-items {
-  list-style-type: none;
-  font-size: 15px;
-  display: inline;
-}
-
-.nav-links {
-  list-style-type: none;
-  font-size: 15px;
-  display: inline;
-}
-
-.habits-logo {
+/* Resetting Some Defaults and Removing Text Decorations */
+* {
   text-decoration: none;
-  color: #2F4858;
-  font-size: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
+/* Establishing Grid System */
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  background-color: #FFA254;
-  font-size: 15px;
-}
-
-.login-welcome {
-  display: flex;
-  justify-content: center;
-  font-size: 3rem;
-}
-
-.login-form {
+/* Stylizing the Navbar */
+.navbar {
+  background-color: #ffa46f;
+  grid-row: span 2; /* Navbar spans both rows on the left */
+  width: 200px;
+  height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 360px;
-  margin-right: 400px;
-  font-size: 15px;
+  align-items: center;
+  justify-content: flex-start;
 }
-.signup-welcome {
+
+.logo-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Stylizing the Logo */
+.habits-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+}
+
+/* Styling the Navigation Links */
+.nav-links {
   display: flex;
-  justify-content: center;
-  font-size: 3rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-links div {
+  margin: 10px 0;
+}
+
+.nav-links a {
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Highlighting active link - optional */
+.nav-links a.active {
+  font-weight: bold;
+}
+
+/* Main Content Styling */
+#main-container {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Footer Styling */
+#main-footer {
+  background: transparent;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Coloring and Styling the Buttons */
+button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+
+/* SignUp Page */
+
+.signup-welcome, .signup-error {
+  text-align: center;
 }
 
 .signup-form {
+  width: 400px;
+  margin: auto;
+  margin-top: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 360px;
-  margin-right: 340px;
-  font-size: 15px;
-  margin-bottom: 50px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px; /* adjust as needed */
+}
+
+.input-container {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #66afe9;
+}
+
+.form-messages .form-text.text-muted,
+.alert.alert-danger {
+  display: block;
+  margin-top: 5px;
+}
+
+.alert.alert-danger {
+  color: red;
+}
+
+.signupSubmit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.signupSubmit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Login Page */
+
+.login-welcome, .login-error {
+  text-align: center;
+}
+
+.login-form {
+  width: 400px;
+  margin: auto;
+  margin-top: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px; /* adjust as needed */
+}
+
+.input-container {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #66afe9;
+}
+
+.form-messages .form-text.text-muted,
+.alert.alert-danger {
+  display: block;
+  margin-top: 5px;
+}
+
+.alert.alert-danger {
+  color: red;
+}
+
+.loginSubmit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  margin: 1rem auto;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.loginSubmit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
