@@ -1,33 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1 class="login-welcome">Welcome to the habitsApp!</h1>
-  
-  {% if error_message %}
-    <h3 class="login-error">{{ error_message }}</h3>
-  {% endif %}
+<h1 class="login-welcome">Welcome to the habitsApp!</h1>
 
-  <form class="login-form" method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    
-    {% for field in form %}
-      <div class="form-group">
-        <label class="form-label">{{ field.label|capfirst }}</label>
-        <div class="input-container">
-          {{ field }}
-          <div class="form-messages">
-            {% if field.help_text %}
-              <small class="form-text text-muted">{{ field.help_text|safe }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-              <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-          </div>
-        </div>
+{% if error_message %}
+<h3 class="login-error">{{ error_message }}</h3>
+{% endif %}
+
+<form class="login-form" method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="form-group">
+    <div class="input-container">
+      <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-input"
+        placeholder="{{ field.label|capfirst }}" {% if field.field.required %}required{% endif %}>
+      <div class="form-messages">
+        {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
       </div>
-    {% endfor %}
-    
-    <input type="submit" class="loginSubmit-btn" value="Login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
+    </div>
+  </div>
+  {% endfor %}
+  <input type="submit" class="loginSubmit-btn" value="Login" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
 {% endblock %}

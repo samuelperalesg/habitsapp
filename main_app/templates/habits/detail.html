@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<button class="back-btn"><a href="/dashboard">Go Back</a></button>
+<button class="detail-back-btn"><a href="/dashboard">Go Back</a></button>
 
-<div class="card">
-  <div class="card-content">
-    <h1 class="card-title">{{ habit.habit_name }}</h1>
-    {% if habit.healthy == False %}
-    <h4>This is not Healthy, Please Review Plan of Action</h4>
-    <p>Plan of Action: {{ habit.plan_of_action }}</p>
-    {% else %}
-    <h4>This is healthy for you!</h4>
-    {% endif %}
-    <p>External Cue: {{ habit.external_cue }}</p>
-    <p>Internal Cue: {{ habit.internal_cue }}</p>
+<div class="habitDetailCard">
+  <h1 class="habit-title">{{ habit.habit_name }}</h1>
+
+  <h4 class="habit-subTitle">External Cue:</h4>
+  <div class="habit-cue-container">
+    <p class="habit-description">{{ habit.external_cue }}</p>
   </div>
+
+  <h4 class="habit-subTitle">Internal Cue:</h4>
+  <div class="habit-cue-container">
+    <p class="habit-description">{{ habit.internal_cue }}</p>
+  </div>
+
+  {% if habit.healthy == False %}
+  <h4 class="unhealthy-alert">This is not healthy</h4>
+
+  <h4 class="habit-subTitle">Plan of Action:</h4>
+  <div class="habit-cue-container">
+    <p class="habit-description">{{ habit.plan_of_action }}</p>
+  </div>
+  {% else %}
+  <h4 class="healthy-alert">This is healthy!</h4>
+  {% endif %}
 
   <div class="habit-actions">
-    <a href="{% url 'update' habit.id %}">Edit</a>
-    <a href="{% url 'delete' habit.id %}">Delete</a>
+    <a href="{% url 'update' habit.id %}" class="action-btn edit-btn">Edit</a>
+    <a href="{% url 'delete' habit.id %}" class="action-btn delete-btn">Delete</a>
   </div>
-
 </div>
-
-
 
 {% endblock %}

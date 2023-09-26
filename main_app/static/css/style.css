@@ -1,4 +1,4 @@
-/* Resetting Some Defaults and Removing Text Decorations */
+/* 1. Resetting Defaults */
 * {
   text-decoration: none;
   list-style: none;
@@ -7,7 +7,10 @@
   box-sizing: border-box;
 }
 
-/* Establishing Grid System */
+
+
+
+/* 2. Grid System and Body Structure */
 body {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -15,10 +18,13 @@ body {
   height: 100vh;
 }
 
-/* Stylizing the Navbar */
+
+
+
+/* 3. Navbar Styles */
 .navbar {
   background-color: #ffa46f;
-  grid-row: span 2; /* Navbar spans both rows on the left */
+  grid-row: span 2;
   width: 200px;
   height: 100vh;
   position: relative;
@@ -31,17 +37,37 @@ body {
 .logo-wrapper {
   margin-top: 1rem;
   margin-bottom: 2rem;
+  width: 200px;
+  text-align: center;
 }
 
-/* Stylizing the Logo */
+#welcome-message {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+
+
+
+/* 4. Logo and Text Styling */
 .habits-logo {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
-  text-align: center;
+  color: #333;
+  margin: auto;
+  cursor: pointer;
+}
+
+.nav-links a, .nav-links div {
+  font-family: 'Montserrat', sans-serif;
   color: #333;
 }
 
-/* Styling the Navigation Links */
+
+
+
+/* 5. Navigation Links and Animations */
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -52,23 +78,29 @@ body {
   margin: 10px 0;
 }
 
-.nav-links a {
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
+.btn-animation a {
+  transition: font-size 0.3s ease;
+  display: inline-block;
 }
 
-/* Highlighting active link - optional */
+.btn-animation a:hover {
+  font-size: 1.2em;
+}
+
+.btn-animation a:active {
+  font-size: 0.8em;
+}
+
 .nav-links a.active {
   font-weight: bold;
 }
 
-/* Main Content Styling */
+/* 6. Main Content and Footer Styling */
 #main-container {
   padding: 20px;
   overflow-y: auto;
 }
 
-/* Footer Styling */
 #main-footer {
   background: transparent;
   text-align: center;
@@ -76,153 +108,312 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Coloring and Styling the Buttons */
-button {
-  background-color: #333;
-  color: white;
+
+
+
+/* 7. Button Styles */
+.logout-btn, .signupSubmit-btn, .loginSubmit-btn {
+  padding: 10px 20px;
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
-  background-color: #555;
+.logout-btn {
+  background-color: #fc6666;
+}
+
+.logout-btn:hover {
+  background-color: #ff0000;
+  transform: scale(1.05);
+}
+
+.signupSubmit-btn, .loginSubmit-btn {
+  background-color: #007bff;
+}
+
+.signupSubmit-btn:hover, .loginSubmit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 
-/* SignUp Page */
 
-.signup-welcome, .signup-error {
+
+/* 8. Form Styles */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-container {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-input:focus, .form-input:hover {
+  border-color: #007bff;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-messages .form-text.text-muted, .alert.alert-danger {
+  margin-top: 5px;
+}
+
+.alert.alert-danger {
+  color: red;
+}
+
+
+
+
+/* 9. Sign Up and Login Pages */
+.signup-welcome, .login-welcome, .signup-error, .login-error {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(64, 75, 147);
+  margin-top: 2rem;
+}
+
+.signup-form, .login-form {
+  margin: auto;
+  margin-top: 2rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .signup-form {
   width: 400px;
-  margin: auto;
-  margin-top: 2rem;
-  font-family: 'Roboto', sans-serif;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-label {
-  font-weight: bold;
-  margin-bottom: 5px; /* adjust as needed */
-}
-
-.input-container {
-  position: relative;
-}
-
-.form-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #66afe9;
-}
-
-.form-messages .form-text.text-muted,
-.alert.alert-danger {
-  display: block;
-  margin-top: 5px;
-}
-
-.alert.alert-danger {
-  color: red;
-}
-
-.signupSubmit-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  float: right;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 1rem;
-}
-
-.signupSubmit-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-/* Login Page */
-
-.login-welcome, .login-error {
-  text-align: center;
 }
 
 .login-form {
-  width: 400px;
-  margin: auto;
+  width: 250px;
+}
+
+.signupSubmit-btn {
   margin-top: 2rem;
-  font-family: 'Roboto', sans-serif;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-label {
-  font-weight: bold;
-  margin-bottom: 5px; /* adjust as needed */
-}
-
-.input-container {
-  position: relative;
-}
-
-.form-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #66afe9;
-}
-
-.form-messages .form-text.text-muted,
-.alert.alert-danger {
-  display: block;
-  margin-top: 5px;
-}
-
-.alert.alert-danger {
-  color: red;
 }
 
 .loginSubmit-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  display: block;
   margin: 1rem auto;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 
-.loginSubmit-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+
+
+/* 10. Detail Page */
+
+.habitDetailCard {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.habit-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #2C3E50; /* Modern, elegant color */
+}
+
+.habit-subTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000000; /* Subtle grey for subtitles */
+}
+
+.habit-cue-container {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.habit-description {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #555;
+}
+
+.unhealthy-alert,
+.healthy-alert {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #e74c3c; /* for unhealthy */
+}
+
+.healthy-alert {
+  color: #27ae60; /* for healthy */
+}
+
+.habit-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-btn,
+.detail-back-btn a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: #fff; /* White text for buttons */
+}
+
+.edit-btn {
+  background-color: #00b963;
+}
+
+.edit-btn:hover {
+  background-color: rgb(23, 141, 117);
+}
+
+.delete-btn {
+  background-color: #E74C3C;
+}
+
+.delete-btn:hover {
+  background-color: #C0392B;
+}
+
+.detail-back-btn a {
+  color: #3498db;
+  background-color: transparent;
+  border: 2px solid #3498db;
+}
+
+.detail-back-btn:hover a {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.detail-back-btn {
+  margin-bottom: 20px;
+  border: none; /* Remove any border from the button */
+}
+
+
+
+
+/* 11. Habit Form Page */
+
+.habitFormContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.habitForm-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #2C3E50;
+}
+
+.habitForm-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: none; 
+}
+
+.habitForm-table th, 
+.habitForm-table td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.habitForm-table tr:last-child th,
+.habitForm-table tr:last-child td {
+  border-bottom: none; /* Removes the border under the last row */
+}
+
+input[type="text"],
+textarea {
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.submit-button-container {
+  text-align: right; 
+}
+
+.habitForm-btn-submit {
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.habitForm-btn-submit:hover {
+  background-color: #2980b9;
+}
+
+.habitForm-back-btn {
+  margin-bottom: 20px;
+  border: none;
+}
+
+.habitForm-back-btn a {
+  text-decoration: none;
+  color: #3498db;
+  padding: 10px 20px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+  transition: all 0.3s;
+  background-color: transparent;
+}
+
+.habitForm-back-btn:hover a {
+  background-color: #3498db;
+  color: #fff;
+}

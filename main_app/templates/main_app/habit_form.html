@@ -2,15 +2,47 @@
 {% block content %}
 
 {% if object %}
-<h1>Edit: <span>{{object.habit_name}}</span></h1>
+<button class="habitForm-back-btn"><a href="{% url 'detail' object.id %}">Go Back</a></button>
 {% else %}
-<h1>Add Habit</h1>
+<button class="habitForm-back-btn"><a href="/dashboard">Go Back</a></button>
 {% endif %}
-<form class="add-form" action="" method="post">
-  {% csrf_token %}
-  <table class="add-table">
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn" />
-</form>
+
+<div class="habitFormContainer">
+  <h1 class="habitForm-title">
+    {% if object %}
+    Edit: <span>{{ object.habit_name }}</span>
+    {% else %}
+    Add Habit
+    {% endif %}
+  </h1>
+  <form class="habitForm" action="" method="post">
+    {% csrf_token %}
+    <table class="habitForm-table">
+      {% for field in form %}
+        <tr id="{{ field.name }}_row" {% if field.name == 'plan_of_action' and object and object.healthy %}style="display:none;"{% endif %}>
+          <td>{{ field.label_tag }}</td>
+          <td>{{ field }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <div class="submit-button-container">
+      <input type="submit" value="Submit" class="habitForm-btn-submit" />
+    </div>
+  </form>
+</div>
+
+<script>
+  function togglePlanOfAction() {
+    var healthyCheckbox = document.getElementById('id_healthy');
+    var planOfActionRow = document.getElementById('plan_of_action_row');
+    planOfActionRow.style.display = healthyCheckbox.checked ? 'none' : 'table-row';
+  }
+
+  document.getElementById('id_healthy').addEventListener('change', togglePlanOfAction);
+  // Call once to set the initial state
+  {% if object %}
+  togglePlanOfAction(); 
+  {% endif %}
+</script>
+
 {% endblock %}

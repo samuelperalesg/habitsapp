@@ -8,11 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" 
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" 
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&family=Open+Sans&family=Raleway&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Habits App</title>
 </head>
 
@@ -27,22 +23,22 @@
                 </div>
                 {% if user.is_authenticated %}
                 <div id="welcome-message">
-                    <h2>Welcome, {{ user.username.lower }}!</h2>
-                </div>
+                    <h2>Welcome, {{ user.username|capfirst }}!</h2>
+                </div>                
                 {% endif %}
                 <div id="navigation-links" class="nav-links">
                     {% if user.is_authenticated %}
-                    <div id="dashboard-btn" class="dashboard-btn"><a href="{% url 'dashboard' %}">Dashboard</a></div>
-                    <div id="inspo-btn" class="inspo-btn"><a href="/inspo">Inspo</a></div>
-                    <div id="logout-btn" class="logout-btn">
+                    <div id="dashboard-btn" class="dashboard-btn btn-animation"><a href="{% url 'dashboard' %}">Dashboard</a></div>
+                    <div id="inspo-btn" class="inspo-btn btn-animation"><a href="/inspo">Inspo</a></div>
+                    <div id="logout-btn">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit">Logout</button>
+                            <button class="logout-btn" type="submit">Logout</button>
                         </form>
                     </div>
                     {% else %}
-                    <div id="signup-btn" class="signup-btn"><a href="{% url 'signup' %}">SignUp</a></div>
-                    <div id="login-btn" class="login-btn"><a href="{% url 'login' %}">Login</a></div>
+                    <div id="signup-btn" class="signup-btn btn-animation"><a href="{% url 'signup' %}">SignUp</a></div>
+                    <div id="login-btn" class="login-btn btn-animation"><a href="{% url 'login' %}">Login</a></div>
                     {% endif %}
                 </div>
             </div>

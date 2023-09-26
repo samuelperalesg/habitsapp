@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <h1 class="signup-welcome">Ready to Sign Up?</h1>
 
 {% if error_message %}
@@ -12,9 +11,9 @@
   {% csrf_token %}
   {% for field in form %}
   <div class="form-group">
-    <label class="form-label">{{ field.label|capfirst }}</label>
     <div class="input-container">
-      {{ field }}
+      <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-input"
+        placeholder="{{ field.label|capfirst }}" {% if field.field.required %}required{% endif %}>
       <div class="form-messages">
         {% if field.help_text %}
         <small class="form-text text-muted">{{ field.help_text|safe }}</small>
@@ -28,5 +27,4 @@
   {% endfor %}
   <input type="submit" class="signupSubmit-btn" value="Sign Up" />
 </form>
-
 {% endblock %}
