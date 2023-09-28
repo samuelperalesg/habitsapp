@@ -1,25 +1,118 @@
-{% extends 'base.html'%}
-{% block content%}
-
-<h1>Inspiration Page</h1>
-<br />
-<br />
-
-<div class="inspo-healthy">
-  <h3>Healthy Habits to Focus On:</h3>
-  <ul>
-    <li>Eating Healthy - This helps us maintain a healthy mood and body!</li>
-    <li>Sleeping Early - Getting to bed on time ensures that we have enough energy for tomorrow!</li>
-    <li>Brushing Your Teeth - Having healthy teeth ensures that our teeth will not rot when we are older :)</li>
-  </ul>
-</div>
-
-<div class="inspo-unhealthy">
-  <h3>Unhealthy Habits to Be Aware Of:</h3>
-  <ul>
-    <li>Snacking (High Sugar or High Salt Content) - This may create an imbalance in our degestive process which can affect mood & energy if we are not careful.</li>
-    <li>Sleeping Late - Not having a sleeping schedule can make our days very unpredictable, we should minimize how long we stay up till.</li>
-    <li>Watching TV - Too much entertainment can lead us astray of our goals, even if our shows are so good, we do not have to bingle the whole thing in one sitting.</li>
-  </ul>
+{% extends 'base.html' %}
+{% block content %}
+<div class="inspiration-container">
+  <h1 class="inspiration-heading">Inspiration Page</h1>
+  <div class="inspiration-grid">
+    <div class="inspiration-column">
+      <div class="inspo-healthy">
+        <h2 class="inspo-subheading">Healthy Habits to Focus On:</h2>
+        <ul class="inspo-list">
+          <li class="inspo-card">
+            <div class="inspo-title">Eating Healthy</div>
+            <div class="inspo-description">This helps us maintain a healthy mood and body!</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Sleeping Early</div>
+            <div class="inspo-description">Getting to bed on time ensures that we have enough energy for tomorrow!</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Drinking Water</div>
+            <div class="inspo-description">Staying hydrated supports overall bodily functions and helps maintain clear skin.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Regular Exercise</div>
+            <div class="inspo-description">Exercise boosts mood, strengthens muscles, and improves cardiovascular health.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Eating Fruits and Vegetables</div>
+            <div class="inspo-description">A diet rich in fruits and vegetables provides essential vitamins and minerals.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Adequate Sleep</div>
+            <div class="inspo-description">Quality sleep is crucial for mental clarity and overall well-being.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Meditation</div>
+            <div class="inspo-description">Meditation reduces stress and promotes relaxation and mindfulness.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Reading</div>
+            <div class="inspo-description">Reading enhances knowledge and cognitive abilities.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Limiting Sugar Intake</div>
+            <div class="inspo-description">Reducing sugar consumption helps maintain a healthy weight and prevents dental issues.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Practicing Gratitude</div>
+            <div class="inspo-description">Gratitude improves mental well-being and fosters positive relationships.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Hygiene</div>
+            <div class="inspo-description">Good hygiene prevents illness and promotes overall health.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Mindful Eating</div>
+            <div class="inspo-description">Eating slowly and savoring food aids digestion and helps with portion control.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="inspiration-column">
+      <div class="inspo-unhealthy">
+        <h2 class="inspo-subheading">Unhealthy Habits to Avoid:</h2>
+        <ul class="inspo-list">
+          <li class="inspo-card">
+            <div class="inspo-title">Snacking (High Sugar or High Salt Content)</div>
+            <div class="inspo-description">This may create an imbalance in our digestive process which can affect mood & energy if we are not careful.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Sleeping Late</div>
+            <div class="inspo-description">Not having a sleeping schedule can make our days very unpredictable, we should minimize how long we stay up till.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Excessive Soda Consumption</div>
+            <div class="inspo-description">High sugar content in soda contributes to weight gain and dental issues.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Sedentary Lifestyle</div>
+            <div class="inspo-description">Sitting for prolonged periods negatively impacts posture and overall health.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Smoking</div>
+            <div class="inspo-description">Smoking increases the risk of various health conditions, including cancer and respiratory diseases.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Excessive Alcohol Consumption</div>
+            <div class="inspo-description">Heavy drinking can lead to liver damage, addiction, and adverse effects on mental health.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Overeating Junk Food</div>
+            <div class="inspo-description">Consuming excessive junk food can result in weight gain and various health issues.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Lack of Physical Activity</div>
+            <div class="inspo-description">A sedentary lifestyle increases the risk of obesity and related health problems.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Not Getting Enough Sleep</div>
+            <div class="inspo-description">Inadequate sleep can lead to fatigue, impaired cognitive function, and mood disturbances.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Excessive Screen Time</div>
+            <div class="inspo-description">Spending too much time in front of screens can negatively impact mental health and sleep patterns.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Ignoring Mental Health</div>
+            <div class="inspo-description">Neglecting mental health can lead to stress, anxiety, and depression.</div>
+          </li>
+          <li class="inspo-card">
+            <div class="inspo-title">Procrastination</div>
+            <div class="inspo-description">Procrastination can lead to increased stress and decreased productivity.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

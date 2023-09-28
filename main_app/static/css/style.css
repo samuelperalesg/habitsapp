@@ -621,8 +621,8 @@ textarea {
 .habit-checkbox + .habit-checkbox-label::before {
   content: '';
   display: block;
-  width: 16px; /* Adjusted width */
-  height: 16px; /* Adjusted height */
+  width: 2rem; /* Adjusted width */
+  height: 2rem; /* Adjusted height */
   border: 2px solid red;
   border-radius: 50%;
   position: absolute;
@@ -630,17 +630,19 @@ textarea {
   left: 50%; /* Centered horizontally */
   transform: translate(-50%, -50%); /* Perfectly centered */
   transition: border-color 0.3s;
+  cursor: pointer;
 }
 
 .habit-checkbox:checked + .habit-checkbox-label::before {
   border-color: green;
+  cursor: pointer;
 }
 
 .habit-checkbox + .habit-checkbox-label::after {
   content: '';
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: transparent;
   border-radius: 50%;
   position: absolute;
@@ -648,14 +650,16 @@ textarea {
   left: 50%; /* Centered horizontally */
   transform: translate(-50%, -50%); /* Perfectly centered */
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .habit-checkbox:checked + .habit-checkbox-label::after {
   background-color: green;
+  cursor: pointer;
 }
 
 .done-text {
-  margin-right: 5rem;
+  margin-right: 7rem;
 }
 
 /* Add Button Container */
@@ -690,4 +694,82 @@ textarea {
 
 .add-btn:hover {
   background-color: #45a049;
+}
+
+
+
+
+/* Inspiration Page */
+
+/* Center the main heading */
+.inspiration-heading {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 20px;
+  font-family: 'Helvetica Neue', sans-serif; /* Modern font */
+}
+
+/* Create a two-column grid layout */
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Style the healthy habits section */
+.inspo-healthy,
+.inspo-unhealthy {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  height: 80vh; /* Set a fixed height for scrolling */
+  width: 100%; /* Each half takes up half of the page width */
+}
+
+/* Style the subheading */
+.inspo-subheading {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+/* Style the list items as cards */
+.inspo-card {
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 5rem;
+}
+
+/* Style the title and description */
+.inspo-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  color: #4CAF50; /* Green color for healthy titles */
+}
+
+.inspo-description {
+  font-size: 0.9rem;
+  color: #555;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
+
+/* Style unhealthy titles */
+.inspo-unhealthy .inspo-title {
+  color: red; /* Red color for unhealthy titles */
+}
+
+/* Additional styles for the new content */
+.inspiration-container {
+  text-align: center;
 }
