@@ -98,7 +98,7 @@ body {
 /* 6. Main Content and Footer Styling */
 #main-container {
   padding: 20px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 #main-footer {
@@ -417,3 +417,89 @@ textarea {
   background-color: #3498db;
   color: #fff;
 }
+
+
+
+
+/* 11. Habit Delete Form Page */
+
+/* Container for the entire delete section */
+#delete-habit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+}
+
+/* Title Styling */
+#delete-habit-title {
+  font-size: 2em;
+  margin-top: 2rem; /* New Margin */
+  margin-bottom: 12rem;
+  color: #333;
+}
+
+/* Confirmation Text Styling */
+#delete-confirmation-text h4 {
+  font-size: 1.2em;
+  color: #666;
+  margin-top: 20px; /* New Margin */
+}
+
+.habit-name {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Delete Button Styling */
+.habit-delete-btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #fc6666;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.habit-delete-btn:hover {
+  background-color: #ff0000;
+  transform: scale(1.05);
+}
+
+/* Cancel Link Styling */
+.cancel-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6cace4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cancel-link:hover {
+  background-color: #007bb5;
+  transform: scale(1.05);
+}
+
+/* Styling for the Form */
+#delete-form {
+  margin-top: 20px;
+}
+
+.page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+
+
+
+/* Dashboard Page */
+

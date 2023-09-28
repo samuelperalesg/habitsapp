@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Delete Habit</h1>
+<div class="page-wrapper">
+  <div id="delete-habit-container">
+    <h1 id="delete-habit-title">Delete Habit</h1>
 
-<h4>
-  Are you sure you want to delete
-  <span>{{ object.habit_name }}</span>?
-</h4>
-
-<form action="" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="Yes - Delete!" class="btn" />
-  <a href="{% url 'detail' habit.id %}">Cancel</a>
-</form>
+    <div id="delete-confirmation-text">
+      <h4>
+        Are you sure you want to delete
+        <span class="habit-name">{{ object.habit_name }}</span>?
+      </h4>
+    </div>
+    
+    <form id="delete-form" action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Yes - Delete!" class="habit-delete-btn" />
+      <a href="{% url 'detail' habit.id %}" class="cancel-link">Cancel</a>
+    </form>
+  </div>
+</div>
 {% endblock %}
