@@ -32,17 +32,25 @@
 </div>
 
 <script>
-  function togglePlanOfAction() {
-    var healthyCheckbox = document.getElementById('id_healthy');
-    var planOfActionRow = document.getElementById('plan_of_action_row');
-    planOfActionRow.style.display = healthyCheckbox.checked ? 'none' : 'table-row';
-  }
+    document.addEventListener('DOMContentLoaded', function() {
+        var healthyCheckbox = document.getElementById('id_healthy');
+        var planOfActionTextarea = document.getElementById('id_plan_of_action');
+        var planOfActionRow = document.getElementById('plan_of_action_row');
+        
+        function toggleRequirement() {
+            if (healthyCheckbox.checked) {
+                planOfActionTextarea.removeAttribute('required');
+            } else {
+                planOfActionTextarea.setAttribute('required', true);
+            }
+            planOfActionRow.style.display = healthyCheckbox.checked ? 'none' : 'table-row';
+        }
 
-  document.getElementById('id_healthy').addEventListener('change', togglePlanOfAction);
-  // Call once to set the initial state
-  {% if object %}
-  togglePlanOfAction(); 
-  {% endif %}
+        if (healthyCheckbox) {
+            healthyCheckbox.addEventListener('change', toggleRequirement);
+            toggleRequirement(); // Call on page load to ensure the correct state
+        }
+    });
 </script>
 
 {% endblock %}

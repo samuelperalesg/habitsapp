@@ -10,6 +10,7 @@ class Habit(models.Model):
 	plan_of_action = models.TextField(max_length=200)
 	external_cue = models.TextField(max_length=200)
 	internal_cue = models.TextField(max_length=200)
+	is_done = models.BooleanField(default=False)
 	
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 

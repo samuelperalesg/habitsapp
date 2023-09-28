@@ -59,7 +59,8 @@ body {
   cursor: pointer;
 }
 
-.nav-links a, .nav-links div {
+.nav-links a,
+.nav-links div {
   font-family: 'Montserrat', sans-serif;
   color: #333;
 }
@@ -112,7 +113,9 @@ body {
 
 
 /* 7. Button Styles */
-.logout-btn, .signupSubmit-btn, .loginSubmit-btn {
+.logout-btn,
+.signupSubmit-btn,
+.loginSubmit-btn {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -130,11 +133,13 @@ body {
   transform: scale(1.05);
 }
 
-.signupSubmit-btn, .loginSubmit-btn {
+.signupSubmit-btn,
+.loginSubmit-btn {
   background-color: #007bff;
 }
 
-.signupSubmit-btn:hover, .loginSubmit-btn:hover {
+.signupSubmit-btn:hover,
+.loginSubmit-btn:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
@@ -166,7 +171,8 @@ body {
   border-radius: 4px;
 }
 
-.form-input:focus, .form-input:hover {
+.form-input:focus,
+.form-input:hover {
   border-color: #007bff;
 }
 
@@ -174,7 +180,8 @@ body {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.form-messages .form-text.text-muted, .alert.alert-danger {
+.form-messages .form-text.text-muted,
+.alert.alert-danger {
   margin-top: 5px;
 }
 
@@ -182,18 +189,44 @@ body {
   color: red;
 }
 
+/* Apply the same style to all form inputs */
+.login-form .form-input,
+.signup-form .form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form .form-input:focus,
+.login-form .form-input:hover,
+.signup-form .form-input:focus,
+.signup-form .form-input:hover {
+  border-color: #007bff;
+}
+
+.login-form .form-input:focus,
+.signup-form .form-input:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
 
 
 
 /* 9. Sign Up and Login Pages */
-.signup-welcome, .login-welcome, .signup-error, .login-error {
+.signup-welcome,
+.login-welcome,
+.signup-error,
+.login-error {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: rgb(64, 75, 147);
   margin-top: 2rem;
 }
 
-.signup-form, .login-form {
+.signup-form,
+.login-form {
   margin: auto;
   margin-top: 2rem;
   font-family: 'Roboto', sans-serif;
@@ -240,14 +273,16 @@ body {
   font-weight: 700;
   font-size: 26px;
   margin-bottom: 20px;
-  color: #2C3E50; /* Modern, elegant color */
+  color: #2C3E50;
+  /* Modern, elegant color */
 }
 
 .habit-subTitle {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #000000; /* Subtle grey for subtitles */
+  color: #000000;
+  /* Subtle grey for subtitles */
 }
 
 .habit-cue-container {
@@ -268,11 +303,13 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #e74c3c; /* for unhealthy */
+  color: #e74c3c;
+  /* for unhealthy */
 }
 
 .healthy-alert {
-  color: #27ae60; /* for healthy */
+  color: #27ae60;
+  /* for healthy */
 }
 
 .habit-actions {
@@ -288,7 +325,8 @@ body {
   display: inline-block;
   font-weight: 600;
   transition: all 0.3s;
-  color: #fff; /* White text for buttons */
+  color: #fff;
+  /* White text for buttons */
 }
 
 .edit-btn {
@@ -320,7 +358,8 @@ body {
 
 .detail-back-btn {
   margin-bottom: 20px;
-  border: none; /* Remove any border from the button */
+  border: none;
+  /* Remove any border from the button */
 }
 
 
@@ -351,10 +390,10 @@ body {
 .habitForm-table {
   width: 100%;
   border-collapse: collapse;
-  border-top: none; 
+  border-top: none;
 }
 
-.habitForm-table th, 
+.habitForm-table th,
 .habitForm-table td {
   padding: 5px;
   text-align: left;
@@ -363,7 +402,8 @@ body {
 
 .habitForm-table tr:last-child th,
 .habitForm-table tr:last-child td {
-  border-bottom: none; /* Removes the border under the last row */
+  border-bottom: none;
+  /* Removes the border under the last row */
 }
 
 input[type="text"],
@@ -378,7 +418,7 @@ textarea {
 }
 
 .submit-button-container {
-  text-align: right; 
+  text-align: right;
 }
 
 .habitForm-btn-submit {
@@ -389,6 +429,7 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  padding: 1rem 2rem;
   transition: background-color 0.3s;
 }
 
@@ -431,13 +472,15 @@ textarea {
   min-height: 100vh;
   padding: 20px;
   text-align: center;
-  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+  font-family: 'Roboto', sans-serif;
+  /* Apply Roboto font */
 }
 
 /* Title Styling */
 #delete-habit-title {
   font-size: 2em;
-  margin-top: 2rem; /* New Margin */
+  margin-top: 2rem;
+  /* New Margin */
   margin-bottom: 12rem;
   color: #333;
 }
@@ -446,7 +489,8 @@ textarea {
 #delete-confirmation-text h4 {
   font-size: 1.2em;
   color: #666;
-  margin-top: 20px; /* New Margin */
+  margin-top: 20px;
+  /* New Margin */
 }
 
 .habit-name {
@@ -503,3 +547,147 @@ textarea {
 
 /* Dashboard Page */
 
+/* Container */
+#dashboard-container {
+  font-family: 'Roboto', sans-serif;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+#date-title {
+  font-weight: 700;
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-weight: 400;
+  font-size: 1.8em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Habits Container */
+#dashboard-habits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* Space between habit cards */
+}
+
+/* Habit Card */
+.habit-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.habit-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Habit Card Content */
+.habit-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-habit-title {
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #333;
+}
+
+/* Checkbox */
+.circle-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.habit-checkbox {
+  display: none;
+}
+
+.habit-checkbox + .habit-checkbox-label::before {
+  content: '';
+  display: block;
+  width: 16px; /* Adjusted width */
+  height: 16px; /* Adjusted height */
+  border: 2px solid red;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; /* Centered vertically */
+  left: 50%; /* Centered horizontally */
+  transform: translate(-50%, -50%); /* Perfectly centered */
+  transition: border-color 0.3s;
+}
+
+.habit-checkbox:checked + .habit-checkbox-label::before {
+  border-color: green;
+}
+
+.habit-checkbox + .habit-checkbox-label::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; /* Centered vertically */
+  left: 50%; /* Centered horizontally */
+  transform: translate(-50%, -50%); /* Perfectly centered */
+  transition: background-color 0.3s;
+}
+
+.habit-checkbox:checked + .habit-checkbox-label::after {
+  background-color: green;
+}
+
+.done-text {
+  margin-right: 5rem;
+}
+
+/* Add Button Container */
+#add-btn-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Button */
+.add-btn {
+  background-color: #4CAF50;
+  /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.add-link {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.add-btn:hover {
+  background-color: #45a049;
+}

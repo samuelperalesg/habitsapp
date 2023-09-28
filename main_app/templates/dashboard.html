@@ -1,24 +1,37 @@
-{% extends 'base.html'%}
-{% block content%}
+{% extends 'base.html' %}
+{% block content %}
 
-<h1>For Today, *Day - Month - Year*</h1>
-
-<h3 class="dashbaord-title">Habits:</h3>
-
-{% for habit in habits %}
-<div class="card">
-  <a href="{% url 'detail' habit.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ habit.habit_name }}</span>
-      <br />
-      Done?
-      <input type="checkbox">
+<div id="dashboard-container">
+  <h1 id="date-title">{% now "D, d F Y" %}</h1>
+  <h3 class="dashboard-title">Habits:</h3>
+  <div id="dashboard-habits-container">
+    {% for habit in habits %}
+    <div class="habit-card">
+      <div class="habit-card-content">
+        <a href="{% url 'detail' habit.id %}" class="habit-link">
+          <span class="dashboard-habit-title">{{ habit.habit_name }}</span>
+        </a>
+        <div class="habit-status">
+          <form method="POST" action="{% url 'update_habit' habit.id %}" class="habit-form">
+            {% csrf_token %}
+            <div class="circle-wrapper">
+              <input type="checkbox" class="habit-checkbox" id="habit-checkbox-{{ habit.id }}" name="is_done" {% if habit.is_done %}checked{% endif %} onchange="this.form.submit()" />
+              <label for="habit-checkbox-{{ habit.id }}" class="habit-checkbox-label">
+                  <span class="done-text">Done?</span> 
+              </label>
+          </div>          
+          </form>
+        </div>
+      </div>
     </div>
-  </a>
+    {% endfor %}
+  </div>
+  
+  <div id="add-btn-container">
+    <button class="add-btn">
+      <a href="{% url 'add' %}" class="add-link">Add Habit</a>
+    </button>
+  </div>
 </div>
 
-{% endfor %}
-<br />
-<br />
-<button class="add-btn"><a href="{% url 'add' %}">Add Habit</a></button>
 {% endblock %}

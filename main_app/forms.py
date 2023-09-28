@@ -15,4 +15,10 @@ class CustomUserCreationForm(UserCreationForm):
 class HabitForm(forms.ModelForm):
     class Meta:
         model = Habit
-        fields = ['habit_name', 'healthy', 'plan_of_action', 'external_cue', 'internal_cue']
+        exclude = ['is_done', 'user']
+        
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['plan_of_action'].required = False
+
