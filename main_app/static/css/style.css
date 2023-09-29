@@ -26,7 +26,6 @@ body {
   background-color: #ffa46f;
   grid-row: span 2;
   width: 200px;
-  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -99,7 +98,6 @@ body {
 /* 6. Main Content and Footer Styling */
 #main-container {
   padding: 20px;
-  overflow: hidden;
 }
 
 #main-footer {
@@ -377,6 +375,7 @@ body {
   font-family: 'Lato', sans-serif;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  overflow: auto;
 }
 
 .habitForm-title {
@@ -545,161 +544,210 @@ textarea {
 
 
 
-/* Dashboard Page */
+/* 12. Dashboard Page */
 
-/* Container */
+/* Container Styling */
 #dashboard-container {
-  font-family: 'Roboto', sans-serif;
-  width: 70%;
-  margin: 0 auto;
-  margin-top: 4rem;
-  background-color: #f9f9f9;
+  width: 80%;
+  margin: auto;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* Title */
-#date-title {
-  font-weight: 700;
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-/* Dashboard Title */
-.dashboard-title {
-  font-weight: 400;
-  font-size: 1.8em;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* Habits Container */
-#dashboard-habits-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  /* Space between habit cards */
-}
-
-/* Habit Card */
-.habit-card {
-  background-color: #fff;
-  padding: 15px;
+  background: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px #ccc;
 }
 
-.habit-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Habit Card Content */
-.habit-card-content {
+/* Date and Add Button Section */
+#date-add-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dashboard-habit-title {
-  font-size: 1.5em;
-  font-weight: 400;
-  color: #333;
+#date-title {
+  font-size: 2.5em;
+  color: black;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Checkbox */
-.circle-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.habit-checkbox {
-  display: none;
-}
-
-.habit-checkbox + .habit-checkbox-label::before {
-  content: '';
-  display: block;
-  width: 2rem; /* Adjusted width */
-  height: 2rem; /* Adjusted height */
-  border: 2px solid red;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%; /* Centered vertically */
-  left: 50%; /* Centered horizontally */
-  transform: translate(-50%, -50%); /* Perfectly centered */
-  transition: border-color 0.3s;
-  cursor: pointer;
-}
-
-.habit-checkbox:checked + .habit-checkbox-label::before {
-  border-color: green;
-  cursor: pointer;
-}
-
-.habit-checkbox + .habit-checkbox-label::after {
-  content: '';
-  display: block;
-  width: 1.8rem;
-  height: 1.8rem;
-  background-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%; /* Centered vertically */
-  left: 50%; /* Centered horizontally */
-  transform: translate(-50%, -50%); /* Perfectly centered */
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-
-.habit-checkbox:checked + .habit-checkbox-label::after {
-  background-color: green;
-  cursor: pointer;
-}
-
-.done-text {
-  margin-right: 7rem;
-}
-
-/* Add Button Container */
-#add-btn-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-/* Button */
-.add-btn {
+#add-btn-container .add-btn {
   background-color: #4CAF50;
-  /* Green */
   color: white;
-  border: none;
-  padding: 10px 20px;
+  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  transition-duration: 0.4s;
   cursor: pointer;
+  border: none;
   border-radius: 5px;
-  outline: none;
-  transition: background-color 0.3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+#add-btn-container .add-btn:hover {
+  background-color: #45a049;
 }
 
 .add-link {
   text-decoration: none;
   color: white;
+}
+
+/* Habits Container */
+#habits-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.habit-section {
+  width: 48%;
+  margin-bottom: 40px;
+}
+
+.dashboard-title {
+  font-size: 2em;
+  color: black;
+  margin-bottom: 20px; /* Added Space */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Habit Card Styling */
+.habit-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+}
+
+.habit-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px 0px #ccc;
+}
+
+.healthy {
+  border-left: 5px solid #00c853;
+}
+
+.unhealthy {
+  border-left: 5px solid #d50000;
+}
+
+.habit-card-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.habit-link {
+  text-decoration: none;
+  color: black;
+  flex-grow: 1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dashboard-habit-title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* Checkbox Styling */
+.circle-wrapper {
+  position: relative;
+}
+
+.habit-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.habit-checkbox-label {
+  position: relative;
+  cursor: pointer;
+  padding-left: 27px; /* Adjusted Space */
+  display: inline-block;
+}
+
+.done-text {
+  font-size: 0.8em;
+  color: #666;
+}
+
+/* Checkboxes - Healthy Habits */
+#healthy-habits-container .habit-checkbox + .habit-checkbox-label::before {
+  content: '';
   display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid green;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.add-btn:hover {
-  background-color: #45a049;
+#healthy-habits-container .habit-checkbox:checked + .habit-checkbox-label::after {
+  content: '';
+  display: block;
+  width: 17px; /* Smaller than the ::before */
+  height: 17px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  left: 3.5px; /* Positioning correctly inside the ::before */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Checkboxes - Unhealthy Habits */
+#unhealthy-habits-container .habit-checkbox + .habit-checkbox-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid red;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#unhealthy-habits-container .habit-checkbox:checked + .habit-checkbox-label::after {
+  content: '';
+  display: block;
+  width: 17px; /* Smaller than the ::before */
+  height: 17px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 3.5px; /* Positioning correctly inside the ::before */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 
 
 
-/* Inspiration Page */
+
+
+
+
+/* 13. Inspiration Page */
 
 /* Center the main heading */
 .inspiration-heading {
