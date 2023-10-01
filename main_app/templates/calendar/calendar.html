@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var events = {{ events|safe }};  // events from the context
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: events,  // added events here
+        dateClick: function(info) {
+            let date = info.dateStr;
+            let url = `{% url 'day_detail_view' date='REPLACE' %}`.replace('REPLACE', date);
+            window.location.href = url;
+        }
+    });
+    calendar.render();
+});
+</script>
+
+<div id='calendar'></div>
+
+{% endblock %}

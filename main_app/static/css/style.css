@@ -554,6 +554,7 @@ textarea {
   background: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px #ccc;
+  margin-top: 3rem;
 }
 
 /* Date and Add Button Section */
@@ -749,14 +750,6 @@ textarea {
 
 /* 13. Inspiration Page */
 
-/* Center the main heading */
-.inspiration-heading {
-  text-align: center;
-  font-size: 36px;
-  margin-top: 20px;
-  font-family: 'Helvetica Neue', sans-serif; /* Modern font */
-}
-
 /* Create a two-column grid layout */
 .inspiration-grid {
   display: grid;
@@ -773,7 +766,7 @@ textarea {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Enable vertical scrolling if needed */
-  height: 80vh; /* Set a fixed height for scrolling */
+  height: 90vh; /* Set a fixed height for scrolling */
   width: 100%; /* Each half takes up half of the page width */
 }
 
@@ -820,4 +813,95 @@ textarea {
 /* Additional styles for the new content */
 .inspiration-container {
   text-align: center;
+}
+
+
+
+
+
+/* 14. Calendar Page */
+
+#cal-day-detail {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  margin-top: 3rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+#cal-day-detail h2,
+#cal-day-detail h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#cal-completed-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#cal-completed-list li {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+}
+
+#cal-completed-list .healthy {
+  background-color: #e3fcef;
+}
+
+#cal-completed-list .unhealthy {
+  background-color: #ffe6e6;
+}
+
+@media (max-width: 768px) {
+  #cal-day-detail {
+      width: 90%;
+  }
+}
+
+#cal-add-btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#cal-add-btn-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.cal-add-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cal-add-btn:hover {
+  background-color: #45a049;
 }

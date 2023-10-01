@@ -9,6 +9,12 @@
       <button class="add-btn">
         <a href="{% url 'add' %}" class="add-link">Add Habit</a>
       </button>
+      <div id="cal-add-btn-container">
+        <form method="POST" action="{% url 'add_to_calendar' %}">
+            {% csrf_token %}
+            <button type="submit" class="cal-add-btn">Add to Calendar</button>
+        </form>
+      </div>       
     </div>
   </div>
 

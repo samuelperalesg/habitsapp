@@ -19,3 +19,11 @@ class Habit(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('detail', kwargs={'habit_id': self.id})
+
+class Day(models.Model):
+    date = models.DateField(unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    habits_completed = models.ManyToManyField(Habit, related_name='completed_habits')
+				
+    class Meta:
+        unique_together = [['user', 'date']]
