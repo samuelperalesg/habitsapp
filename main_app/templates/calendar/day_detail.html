@@ -1,13 +1,20 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
+
 <div id="cal-day-detail" class="cal-day-detail">
-  <h2>{{ day.date }}</h2>
-  <h3>Completed Habits:</h3>
-  <ul id="cal-completed-list" class="cal-completed-list">
-    {% for habit in day.habits_completed.all %}
-    <li class="{{ habit.healthy|yesno:'healthy,unhealthy' }}">
-      {{ habit.habit_name }}
-    </li>
-    {% endfor %}
-  </ul>
+    <h2>{{ day.date }}</h2>
+    <h3>Completed Habits:</h3>
+    <ul id="cal-completed-list" class="cal-completed-list">
+        {% for habit in day.habits_completed.all %}
+        <li class="{{ habit.healthy|yesno:'healthy,unhealthy' }}">
+            {{ habit.habit_name }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% if not day.habits_completed.all %}
+    <p>No habits recorded for this day.</p>
+    {% endif %}
 </div>
+
 {% endblock %}

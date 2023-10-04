@@ -21,9 +21,10 @@ class Habit(models.Model):
 		return reverse('detail', kwargs={'habit_id': self.id})
 
 class Day(models.Model):
-    date = models.DateField(unique=True)
+    date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     habits_completed = models.ManyToManyField(Habit, related_name='completed_habits')
+    color_status = models.CharField(max_length=100, null=True, blank=True)
 				
     class Meta:
         unique_together = [['user', 'date']]

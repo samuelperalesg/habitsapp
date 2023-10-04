@@ -2,11 +2,12 @@ from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden
 from django.utils import timezone
 from .models import Habit, Day
 from .forms import CustomUserCreationForm, HabitForm
@@ -73,35 +74,37 @@ def habits_detail(request, habit_id):
 def inspo(request):
     return render(request, 'inspo.html')
 
+
+
+
+
+
+
+
+
 # Calendar View
 @login_required
-# ... [other imports and code]
 def calendar_view(request):
     events = []
-    days = Day.objects.filter(user=request.user)  # Filtering by the logged-in user
+    days = Day.objects.filter(user=request.user)
     
     for day in days:
-        healthy_habits = day.habits_completed.filter(healthy=True)
-        
-        if healthy_habits.count() == 0:  # If there are no healthy habits, no need to color the day
+        if not day.color_status:  # Ensure color is set
             continue
         
-        completed_healthy_habits = healthy_habits.filter(is_done=True)
+        event = {
+            'start': day.date.strftime('%Y-%m-%d'),
+            'color': day.color_status,
+            'display': 'background'
+        }
         
-        if completed_healthy_habits.count() == healthy_habits.count():
-            color = '#B3FFB3'  # Pastel Green
-        elif completed_healthy_habits.count() > 0:
-            color = '#FFFFB3'  # Pastel Yellow
-        else:
-            color = '#FFB3B3'  # Pastel Red
-            
-        events.append({
-            'start': day.date.strftime('%Y-%m-%d'),  # convert to string
-            'color': color,
-            'display': 'background'  # makes the color fill the entire box
-        })
+        # Log event data
+        print(f'Event for {event["start"]}: {event}')
+
+        events.append(event)
 
     return render(request, 'calendar/calendar.html', {'events': events})
+
 
 
 # Day Detail View
@@ -109,6 +112,13 @@ def calendar_view(request):
 def day_detail_view(request, date): 
     day_date = datetime.strptime(date, "%Y-%m-%d").date()
     day, created = Day.objects.get_or_create(date=day_date, user=request.user)
+
+    # Log day object and creation status
+    print(f"Day Created: {created}, Day Object: {day}")
+
+    if day.habits_completed.count() == 0:
+        messages.info(request, "No habits recorded for this day.")
+        
     return render(request, 'calendar/day_detail.html', {'day': day})
 
 
@@ -117,12 +127,57 @@ def day_detail_view(request, date):
 def add_to_calendar(request):
     if request.method == "POST":
         today = timezone.localtime(timezone.now()).date()
+
+        # Log today's date
+        print(f'Today’s Date: {today}')
+
+        if today > timezone.localtime(timezone.now()).date():
+            messages.error(request, "Cannot add habits to future dates.")
+            return redirect('calendar_view')
+
         day, created = Day.objects.get_or_create(date=today, user=request.user)
+
+        # Log day object and creation status
+        print(f'Day Created: {created}, Day Object: {day}')
+
         completed_habits = Habit.objects.filter(user=request.user, is_done=True)
         day.habits_completed.set(completed_habits)
-        return redirect('day_detail_view', date=day.date)  # Updated to use 'date' instead of 'day_id'
+
+        healthy_habits = Habit.objects.filter(user=request.user, healthy=True)
+        completed_healthy_habits = healthy_habits.filter(is_done=True)
+
+        # Check and assign a color based on completed healthy habits
+        if completed_healthy_habits.count() == healthy_habits.count() and completed_healthy_habits.count() > 0:
+            day.color_status = '#B3FFB3'  # Green
+        elif completed_healthy_habits.count() > 0:
+            day.color_status = '#FFFFB3'  # Yellow
+        elif healthy_habits.exists():  # There are healthy habits but none are completed
+            day.color_status = '#FFB3B3'  # Red
+        else:
+            # If there are no healthy habits, assign no color
+            day.color_status = None
+
+        # Log calculated color
+        print(f'Calculated color: {day.color_status}')
+
+        day.save()
+
+        # Log stored color after save
+        retrieved_day = Day.objects.get(date=today, user=request.user)
+        print(f'Stored color: {retrieved_day.color_status}')
+
+        return redirect('day_detail_view', date=day.date)
     else:
         return HttpResponseForbidden()
+
+
+
+
+
+
+
+
+
 
 # Class Based Views (CBVs) ====================================================================================
 # Create Habit

@@ -862,14 +862,23 @@ textarea {
   background-color: #ffe6e6;
 }
 
+#cal-completed-list .completed {
+  text-decoration: line-through;
+}
+
+#cal-completed-list .incomplete {
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   #cal-day-detail {
       width: 90%;
   }
 }
 
+/* Add new styles for your button */
 #cal-add-btn {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -904,4 +913,9 @@ textarea {
 
 .cal-add-btn:hover {
   background-color: #45a049;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: transparent !important;
+  border: 2px solid black !important;
 }
