@@ -2,6 +2,8 @@
 
 A web application where users are able to log and track thieir habits.
 
+### Trello Board: https://trello.com/invite/b/B5yfz1iM/a2fa4af8051120ebbfc53819e3a5a12a/habits-app
+
 ## Technologies Used
 * HTML5
 * CSS3
