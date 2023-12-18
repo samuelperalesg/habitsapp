@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -47,6 +47,16 @@ def user_signup(request):
 
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+# Guest Login View
+def guest_login(request):
+    if request.method == 'POST':
+        user = authenticate(username='Guest', password='habitsapp123')
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+    return redirect('login')
 
 # Updating Habit's Completion
 def update_habit(request, habit_id):

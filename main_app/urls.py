@@ -16,5 +16,5 @@ urlpatterns = [
     path('calendar/', views.calendar_view, name='calendar'),
     path('day/<str:date>/', views.day_detail_view, name='day_detail_view'),
     path('add_to_calendar/', views.add_to_calendar, name='add_to_calendar'),
-    
+    path('guest_login/', views.guest_login, name='guest_login'),
 ]

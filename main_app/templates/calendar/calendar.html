@@ -13,11 +13,7 @@
         // Handle events with color set to null
         events.forEach(function(event) {
             if (event.color === null) {
-                // Option 1: Remove the color property
                 delete event.color;
-
-                // Option 2: Set a default color if you want
-                // event.color = '#YOUR_DEFAULT_COLOR';
             }
         });
 

@@ -143,8 +143,6 @@ body {
 }
 
 
-
-
 /* 8. Form Styles */
 .form-group {
   margin-bottom: 15px;
@@ -272,7 +270,6 @@ body {
   font-size: 26px;
   margin-bottom: 20px;
   color: #2C3E50;
-  /* Modern, elegant color */
 }
 
 .habit-subTitle {
@@ -280,7 +277,6 @@ body {
   font-weight: 700;
   margin-bottom: 10px;
   color: #000000;
-  /* Subtle grey for subtitles */
 }
 
 .habit-cue-container {
@@ -302,12 +298,10 @@ body {
   font-weight: 700;
   margin-bottom: 10px;
   color: #e74c3c;
-  /* for unhealthy */
 }
 
 .healthy-alert {
   color: #27ae60;
-  /* for healthy */
 }
 
 .habit-actions {
@@ -324,7 +318,6 @@ body {
   font-weight: 600;
   transition: all 0.3s;
   color: #fff;
-  /* White text for buttons */
 }
 
 .edit-btn {
@@ -357,7 +350,6 @@ body {
 .detail-back-btn {
   margin-bottom: 20px;
   border: none;
-  /* Remove any border from the button */
 }
 
 
@@ -402,7 +394,6 @@ body {
 .habitForm-table tr:last-child th,
 .habitForm-table tr:last-child td {
   border-bottom: none;
-  /* Removes the border under the last row */
 }
 
 input[type="text"],
@@ -463,7 +454,7 @@ textarea {
 
 /* 11. Habit Delete Form Page */
 
-/* Container for the entire delete section */
+
 #delete-habit-container {
   display: flex;
   flex-direction: column;
@@ -472,14 +463,12 @@ textarea {
   padding: 20px;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  /* Apply Roboto font */
 }
 
 /* Title Styling */
 #delete-habit-title {
   font-size: 2em;
   margin-top: 2rem;
-  /* New Margin */
   margin-bottom: 12rem;
   color: #333;
 }
@@ -489,7 +478,6 @@ textarea {
   font-size: 1.2em;
   color: #666;
   margin-top: 20px;
-  /* New Margin */
 }
 
 .habit-name {
@@ -542,11 +530,8 @@ textarea {
 }
 
 
-
-
 /* 12. Dashboard Page */
 
-/* Container Styling */
 #dashboard-container {
   width: 80%;
   margin: auto;
@@ -609,7 +594,7 @@ textarea {
 .dashboard-title {
   font-size: 2em;
   color: black;
-  margin-bottom: 20px; /* Added Space */
+  margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -674,7 +659,7 @@ textarea {
 .habit-checkbox-label {
   position: relative;
   cursor: pointer;
-  padding-left: 27px; /* Adjusted Space */
+  padding-left: 27px;
   display: inline-block;
 }
 
@@ -702,12 +687,12 @@ textarea {
 #healthy-habits-container .habit-checkbox:checked + .habit-checkbox-label::after {
   content: '';
   display: block;
-  width: 17px; /* Smaller than the ::before */
+  width: 17px;
   height: 17px;
   background-color: green;
   border-radius: 50%;
   position: absolute;
-  left: 3.5px; /* Positioning correctly inside the ::before */
+  left: 3.5px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -731,12 +716,12 @@ textarea {
 #unhealthy-habits-container .habit-checkbox:checked + .habit-checkbox-label::after {
   content: '';
   display: block;
-  width: 17px; /* Smaller than the ::before */
+  width: 17px;
   height: 17px;
   background-color: red;
   border-radius: 50%;
   position: absolute;
-  left: 3.5px; /* Positioning correctly inside the ::before */
+  left: 3.5px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -750,7 +735,6 @@ textarea {
 
 /* 13. Inspiration Page */
 
-/* Create a two-column grid layout */
 .inspiration-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -758,28 +742,27 @@ textarea {
   padding: 20px;
 }
 
-/* Style the healthy habits section */
+
 .inspo-healthy,
 .inspo-unhealthy {
   background-color: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Enable vertical scrolling if needed */
-  height: 90vh; /* Set a fixed height for scrolling */
-  width: 100%; /* Each half takes up half of the page width */
+  overflow-y: auto;
+  height: 90vh;
+  width: 100%;
 }
 
-/* Style the subheading */
 .inspo-subheading {
   text-align: center;
   font-size: 1.5rem;
   margin-top: 0;
   margin-bottom: 10px;
-  font-family: 'Arial', sans-serif; /* Modern font */
+  font-family: 'Arial', sans-serif;
 }
 
-/* Style the list items as cards */
+
 .inspo-card {
   background-color: #ffffff;
   padding: 10px;
@@ -790,27 +773,27 @@ textarea {
   height: 5rem;
 }
 
-/* Style the title and description */
+
 .inspo-title {
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
-  color: #4CAF50; /* Green color for healthy titles */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #4CAF50;
 }
 
 .inspo-description {
   font-size: 0.9rem;
   color: #555;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style unhealthy titles */
+
 .inspo-unhealthy .inspo-title {
-  color: red; /* Red color for unhealthy titles */
+  color: red;
 }
 
-/* Additional styles for the new content */
+
 .inspiration-container {
   text-align: center;
 }
@@ -876,7 +859,7 @@ textarea {
   }
 }
 
-/* Add new styles for your button */
+
 #cal-add-btn {
   background-color: #4CAF50;
   border: none;

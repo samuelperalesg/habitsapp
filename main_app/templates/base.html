@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;600&family=Raleway&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;600&family=Raleway&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <title>Habits App</title>
 </head>
 
@@ -25,13 +27,15 @@
                 {% if user.is_authenticated %}
                 <div id="welcome-message">
                     <h2>Welcome, {{ user.username|capfirst }}!</h2>
-                </div>                
+                </div>
                 {% endif %}
                 <div id="navigation-links" class="nav-links">
                     {% if user.is_authenticated %}
-                    <div id="dashboard-btn" class="dashboard-btn btn-animation"><a href="{% url 'dashboard' %}">Dashboard</a></div>
+                    <div id="dashboard-btn" class="dashboard-btn btn-animation"><a
+                            href="{% url 'dashboard' %}">Dashboard</a></div>
                     <div id="inspo-btn" class="inspo-btn btn-animation"><a href="/inspo">Inspo</a></div>
-                    <div id="calendar-btn" class="calendar-btn btn-animation"><a href="{% url 'calendar' %}">Calendar</a></div>
+                    <div id="calendar-btn" class="calendar-btn btn-animation"><a
+                            href="{% url 'calendar' %}">Calendar</a></div>
                     <div id="logout-btn">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
@@ -41,6 +45,13 @@
                     {% else %}
                     <div id="signup-btn" class="signup-btn btn-animation"><a href="{% url 'signup' %}">SignUp</a></div>
                     <div id="login-btn" class="login-btn btn-animation"><a href="{% url 'login' %}">Login</a></div>
+                    <div class="login-btn btn-animation">
+                        <form method="post" action="{% url 'guest_login' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="loginSubmit-btn">Guest Login</button>
+                        </form>
+                    </div>
+
                     {% endif %}
                 </div>
             </div>
@@ -59,4 +70,5 @@
 
 
 </body>
+
 </html>
