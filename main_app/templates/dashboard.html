@@ -1,0 +1,79 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div id="dashboard-container">
+  <!-- Section 1: Date and Add Button -->
+  <div id="date-add-container">
+    <h1 id="date-title">{% now "D, d F Y" %}</h1>
+    <div id="add-btn-container">
+      <button class="add-btn">
+        <a href="{% url 'add' %}" class="add-link">Add Habit</a>
+      </button>
+      <div id="cal-add-btn-container">
+        <form method="POST" action="{% url 'add_to_calendar' %}">
+            {% csrf_token %}
+            <button type="submit" class="cal-add-btn">Add to Calendar</button>
+        </form>
+      </div>           
+    </div>
+  </div>
+
+  <!-- Section 2: Habit Containers -->
+  <div id="habits-container">
+    <!-- Healthy Habits -->
+    <div id="healthy-habits-container" class="habit-section">
+      <h3 class="dashboard-title">Healthy Habits:</h3>
+      {% for habit in habits %} 
+        {% if habit.healthy %}
+          <div class="habit-card healthy">
+            <div class="habit-card-content">
+              <a href="{% url 'detail' habit.id %}" class="habit-link">
+                <span class="dashboard-habit-title">{{ habit.habit_name }}</span>
+              </a>
+              <div class="habit-status">
+                <form method="POST" action="{% url 'update_habit' habit.id %}" class="habit-form">
+                  {% csrf_token %}
+                  <div class="circle-wrapper">
+                    <input type="checkbox" class="habit-checkbox" id="habit-checkbox-{{ habit.id }}" name="is_done" {% if habit.is_done %}checked{% endif %} onchange="this.form.submit()" />
+                    <label for="habit-checkbox-{{ habit.id }}" class="habit-checkbox-label">
+                      <span class="done-text">Done?</span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %} 
+      {% endfor %}
+    </div>
+
+    <!-- Unhealthy Habits -->
+    <div id="unhealthy-habits-container" class="habit-section">
+      <h3 class="dashboard-title">Unhealthy Habits:</h3>
+      {% for habit in habits %} 
+        {% if not habit.healthy %}
+          <div class="habit-card unhealthy">
+            <div class="habit-card-content">
+              <a href="{% url 'detail' habit.id %}" class="habit-link">
+                <span class="dashboard-habit-title">{{ habit.habit_name }}</span>
+              </a>
+              <div class="habit-status">
+                <form method="POST" action="{% url 'update_habit' habit.id %}" class="habit-form">
+                  {% csrf_token %}
+                  <div class="circle-wrapper">
+                    <input type="checkbox" class="habit-checkbox" id="habit-checkbox-{{ habit.id }}" name="is_done" {% if habit.is_done %}checked{% endif %} onchange="this.form.submit()" />
+                    <label for="habit-checkbox-{{ habit.id }}" class="habit-checkbox-label">
+                      <span class="done-text">Slipped?</span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %} 
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
