@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 LOGIN_REDIRECT_URL = '/dashboard'
 
 SIGNUP_REDIRECT_URL = '/dashboard'
