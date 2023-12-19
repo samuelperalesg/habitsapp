@@ -14,3 +14,4 @@ virtualenv-clone==0.5.7
 virtualenvwrapper==4.8.4
 gunicorn
 python-dotenv
+whitenoise
