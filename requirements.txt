@@ -13,3 +13,4 @@ virtualenv==20.13.1
 virtualenv-clone==0.5.7
 virtualenvwrapper==4.8.4
 gunicorn
+python-dotenv
