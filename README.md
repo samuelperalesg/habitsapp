@@ -1,5 +1,8 @@
 # habitsApp
 
+## Getting Started
+Experience habitsApp live: [Start Tracking Your Habits](https://habitsapp.onrender.com)
+
 Welcome to **habitsApp** - a web application where users can log and track their habits. This app is designed to help users build healthy habits and break unhealthy ones, promoting a lifestyle focused on well-being and personal growth.
 
 ## Technologies Used
@@ -9,9 +12,6 @@ Welcome to **habitsApp** - a web application where users can log and track their
 
 ## Trello Board
 View the development process and upcoming features on my [Trello Board](https://trello.com/invite/b/B5yfz1iM/a2fa4af8051120ebbfc53819e3a5a12a/habits-app).
-
-## Getting Started
-Experience habitsApp live: [Start Tracking Your Habits]("")
 
 ## Screenshots
 
