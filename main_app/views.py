@@ -85,13 +85,6 @@ def inspo(request):
     return render(request, 'inspo.html')
 
 
-
-
-
-
-
-
-
 # Calendar View
 @login_required
 def calendar_view(request):

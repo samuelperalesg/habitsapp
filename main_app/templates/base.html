@@ -14,8 +14,16 @@
     <title>Habits App</title>
 </head>
 
+
 <body class="grid-container">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
+    <div id="rotate-overlay">
+        <div class="rotate-device">
+            <img src="{% static '/images/rotate_phone.png' %}" alt="Rotate Device" />
+        </div>
+    </div>
+
     <header id="main-header" class="navbar grid-item">
         <nav id="main-nav" class="nav-wrapper">
             <div class="nav-items">
@@ -70,5 +78,20 @@
 
 
 </body>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        function checkWidth() {
+            const overlay = document.getElementById('rotate-overlay');
+        if (window.innerWidth < 500) {
+            overlay.classList.add('show');
+        } else {
+            overlay.classList.remove('show');
+        }
+        }
+        window.addEventListener('resize', checkWidth);
+        checkWidth();
+    });      
+</script>
 
 </html>
